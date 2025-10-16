@@ -1,4 +1,4 @@
-# Sistema de Gestão Comercial para Software Houses
+# Sistema de Gestão Comercial - Software Houses
 
 ## Descrição
 Este repositório contém os scripts SQL para a criação, população e manipulação do banco de dados de um Sistema de Gestão Comercial voltado para Software Houses. O sistema contempla:

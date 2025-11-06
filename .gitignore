@@ -1,0 +1,11 @@
+# Arquivos de log
+*.log
+
+# Pasta de build do Maven
+/target/
+
+# Arquivo POM gerado pelo maven-shade-plugin
+dependency-reduced-pom.xml
+
+# Arquivos de configuração de IDEs
+.idea/

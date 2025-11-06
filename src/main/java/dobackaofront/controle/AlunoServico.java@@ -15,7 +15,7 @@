@@ -1,0 +1,104 @@
+package br.com.dobackaofront.controle;
+
+import br.com.dobackaofront.dao.AlunoDAO;
+import br.com.dobackaofront.dao.DataAccessException;
+import br.com.dobackaofront.modelo.Aluno;
+import java.util.List;
+
+public class AlunoServico {
+
+    private final AlunoDAO alunoDAO;
+
+    public AlunoServico() {
+        this.alunoDAO = new AlunoDAO();
+    }
+
+    public void cadastrarAluno(String nome, String cpf, int idade, String serie, String turno, String telefone) {
+        // Validação do formato do CPF
+        if (!isCpfValido(cpf)) {
+            throw new ServiceException("Formato de CPF inválido. Use o formato XXX.XXX.XXX-XX.");
+        }
+
+        // Validação simples para evitar CPF duplicado
+        if (alunoDAO.buscarPorCpf(cpf) != null) {
+            throw new ServiceException("Já existe um aluno cadastrado com este CPF.");
+        }
+
+        // Validação de campos obrigatórios que não podem ser vazios
+        if (nome == null || nome.trim().isEmpty() || serie == null || serie.trim().isEmpty() || turno == null || turno.trim().isEmpty()) {
+            throw new ServiceException("Nome, Série e Turno são campos obrigatórios.");
+        }
+
+        Aluno novoAluno = new Aluno(nome, cpf, idade, serie, turno, telefone);
+        alunoDAO.cadastrar(novoAluno);
+        System.out.println("✅ Aluno cadastrado com sucesso!");
+    }
+
+    public void listarAlunos() {
+        List<Aluno> alunos = alunoDAO.listar();
+        if (alunos.isEmpty()) {
+            System.out.println("⚠️ Nenhum aluno cadastrado.");
+        } else {
+            System.out.println("\n--- LISTA DE ALUNOS ---");
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno); // Usa o método toString() da classe Aluno
+            }
+            System.out.println("-----------------------");
+        }
+    }
+
+    public void buscarAlunoPorCPF(String cpf) {
+        Aluno aluno = alunoDAO.buscarPorCpf(cpf);
+        if (aluno != null) {
+            System.out.println("--- ALUNO ENCONTRADO ---");
+            System.out.println(aluno);
+            System.out.println("------------------------");
+        } else {
+            System.out.println("⚠️ Aluno com o CPF " + cpf + " não encontrado.");
+        }
+    }
+
+    public void editarAluno(String cpf, String nome, String idadeStr, String serie, String turno, String telefone) {
+        Aluno aluno = alunoDAO.buscarPorCpf(cpf);
+        if (aluno == null) {
+            throw new ServiceException("Aluno com o CPF " + cpf + " não encontrado.");
+        }
+
+        boolean isAltered = false;
+        // Lógica de atualização: só altera se um novo valor foi fornecido
+        if (!nome.trim().isEmpty()) { aluno.setNome(nome); isAltered = true; }
+        if (!idadeStr.trim().isEmpty()) {
+            try {
+                aluno.setIdade(Integer.parseInt(idadeStr));
+                isAltered = true;
+            } catch (NumberFormatException e) {
+                throw new ServiceException("Idade inválida. Por favor, insira um número.");
+            }
+        }
+        if (!serie.trim().isEmpty()) { aluno.setSerie(serie); isAltered = true; }
+        if (!turno.trim().isEmpty()) { aluno.setTurno(turno); isAltered = true; }
+        if (!telefone.trim().isEmpty()) { aluno.setTelefone(telefone); isAltered = true; }
+
+        if (isAltered) {
+            alunoDAO.editar(aluno);
+            System.out.println("✅ Aluno atualizado com sucesso!");
+        } else {
+            System.out.println("ℹ️ Nenhum dado foi alterado.");
+        }
+    }
+
+    public void removerAluno(String cpf) {
+        int removido = alunoDAO.remover(cpf);
+        if (removido > 0) {
+            System.out.println("✅ Aluno removido com sucesso!");
+        } else {
+            throw new ServiceException("Aluno com o CPF " + cpf + " não encontrado para remoção.");
+        }
+    }
+
+    private boolean isCpfValido(String cpf) {
+        if (cpf == null) return false;
+        // Regex para validar o formato XXX.XXX.XXX-XX
+        return cpf.matches("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
+    }
+}

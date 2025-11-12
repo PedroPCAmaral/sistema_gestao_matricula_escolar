@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Matrículas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Gestão de Matrículas</h1>
+        <div id="userInfo" class="hidden">
+            <span id="userName"></span>
+            <button id="logoutButton">Sair</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Tela de Login -->
+        <div id="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" id="login" placeholder="Usuário" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </div>
+
+        <!-- Conteúdo Principal (escondido por padrão) -->
+        <div id="main-content" class="hidden">
+            <h2>Gerenciar Alunos</h2>
+            
+            <!-- Formulário para Adicionar/Editar Aluno -->
+            <form id="aluno-form">
+                <h3>Adicionar Novo Aluno</h3>
+                <input type="hidden" id="alunoId">
+                <input type="text" id="alunoNome" placeholder="Nome do Aluno" required>
+                <input type="email" id="alunoEmail" placeholder="E-mail do Aluno" required>
+                <input type="date" id="alunoDataNascimento" required>
+                <button type="submit">Salvar Aluno</button>
+            </form>
+
+            <!-- Tabela de Alunos -->
+            <h3>Alunos Cadastrados</h3>
+            <table id="alunos-table">
+                <thead>
+                    <tr><th>ID</th><th>Nome</th><th>Email</th><th>Data de Nascimento</th><th>Ações</th></tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas serão adicionadas via JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

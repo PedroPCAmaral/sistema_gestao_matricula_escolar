@@ -1,100 +1,34 @@
-# Sistema de Gestão Comercial - Software Houses
+# Sistema de cadastro de alunos
 
-## Descrição
-Este repositório contém os scripts SQL para a criação, população e manipulação do banco de dados de um Sistema de Gestão Comercial voltado para Software Houses. O sistema contempla:
+1. Visão Geral
+Este é um projeto de um sistema de Matrícula Escolar desenvolvido para gerenciar o ciclo de vida completo do dado do aluno, utilizando o CRUD (Create, Read, Update, Delete). O sistema foi feito em pacotes (modelo, controle e visao) para separar as responsabilidades e implementar a lógica de negócio e a interação com o banco de dados MySQL.
 
-- Cadastro de clientes
-- Cadastro de projetos
-- Gerenciamento de tarefas
-- Controle de orçamentos e pagamentos
-- Relacionamentos entre as entidades do banco de dados
+2.Público-Alvo
+O público-alvo é qualquer instituição que necessita realizar as operações administrativas de cadastro e gerenciamento de alunos como escolas, uninversidades ou academias.
 
-O objetivo é demonstrar fidelidade aos diagramas, boas práticas em SQL, organização e qualidade técnica.
+3.O Problema a Ser Resolvido
+O sistema resolve o problema da gestão manual ou ineficiente dos dados de alunos. Ele padroniza as operações essenciais para o ciclo de vida de um registro, garantindo que as informações dos alunos possam ser criadas, consultadas, modificadas e excluídas de forma organizada e persistente em um banco de dados.
 
----
+4.Objetivo do Sistema
+O objetivo principal é oferecer uma aplicação que demonstre a capacidade de realizar as quatro operações essenciais (CRUD) sobre a entidade Aluno. Isso é alcançado por meio de uma interface de terminal que interage com uma camada de serviço (AlunoServico) para persistir os dados no banco.
 
-## Estrutura do Repositório
-- `sistema_gestao_comercial.sql` : Arquivo único contendo:
-  - Scripts de criação das tabelas
-  - Scripts de inserção de dados (população do banco)
-  - Scripts de manipulação de dados (SELECT, UPDATE, DELETE)
+ 5.Funcionalidades do Sistema (CRUD)
+O sistema oferece as seguintes funcionalidades básicas, apresentadas ao usuário via menu (classe `Main`):
 
----
+CREATE(Criar) = Opção 1: Cadastrar Aluno -> Adiciona um novo registro de aluno ao banco de dados. 
 
-## Tabelas e Descrição
-1. **Clientes**
-   - `id_cliente` (INT, PK, AUTO_INCREMENT)
-   - `nome` (VARCHAR(100), NOT NULL)
-   - `email` (VARCHAR(100), UNIQUE, NOT NULL)
-   - `telefone` (VARCHAR(20))
-   - `endereco` (VARCHAR(200))
-   - `data_cadastro` (DATE, NOT NULL, DEFAULT CURRENT_DATE)
+READ (Ler) = Opção 2: Listar Alunos -> Consulta e exibe todos os dados dos alunos existentes no banco. 
 
-2. **Projetos**
-   - `id_projeto` (INT, PK, AUTO_INCREMENT)
-   - `nome` (VARCHAR(100), NOT NULL)
-   - `descricao` (TEXT)
-   - `data_inicio` (DATE, NOT NULL)
-   - `data_fim` (DATE)
-   - `id_cliente` (INT, FK → Clientes.id_cliente)
+READ (Ler) = Opção 3: Buscar por CPF -> Busca e retorna os dados de um aluno específico, utilizando o CPF como critério de busca. 
 
-3. **Tarefas**
-   - `id_tarefa` (INT, PK, AUTO_INCREMENT)
-   - `descricao` (TEXT, NOT NULL)
-   - `status` (ENUM('Pendente','Em Andamento','Concluída'), DEFAULT 'Pendente')
-   - `data_inicio` (DATE, NOT NULL)
-   - `data_fim` (DATE)
-   - `id_projeto` (INT, FK → Projetos.id_projeto)
+UPDATE (Atualizar) = Opção 4: Editar Aluno -> Permite modificar um registro de aluno já existente no banco de dados (ex: alterar turno ou telefone).
 
-4. **Orcamentos**
-   - `id_orcamento` (INT, PK, AUTO_INCREMENT)
-   - `descricao` (TEXT, NOT NULL)
-   - `valor` (DECIMAL(10,2), NOT NULL)
-   - `data_criacao` (DATE, NOT NULL, DEFAULT CURRENT_DATE)
-   - `id_projeto` (INT, FK → Projetos.id_projeto)
+DELETE (Deletar) = Opção 5: Remover Aluno -> Remove permanentemente um registro de aluno do banco de dados.
 
-5. **Pagamentos**
-   - `id_pagamento` (INT, PK, AUTO_INCREMENT)
-   - `valor` (DECIMAL(10,2), NOT NULL)
-   - `data_pagamento` (DATE, NOT NULL, DEFAULT CURRENT_DATE)
-   - `id_orcamento` (INT, FK → Orcamentos.id_orcamento)
+6. Estrutura do Projeto (Pacotes): Classe Aluno (Pacote modelo): Serve como o molde para criar objetos que representam um aluno. Atributos: id (PK), nome, cpf , idade, serie, turno, telefone. Métodos: Possui getters e setters para manipular os atributos.
 
----
+Classe AlunoServico (Pacote controle): É o "cérebro" da aplicação.]Implementa toda a lógica CRUD. Responsabilidade: Recebe os dados da interface e interage com o banco de dados (via Conexao) para executar comandos SQL.
 
-## Como Utilizar
-1. Criar o banco de dados no MySQL:
-   ```sql
+Classe Conexao (Pacote controle): Classe utilitária responsável por estabelecer e retornar a conexão com o banco de dados MySQL.
 
-SOURCE caminho/do/arquivo/sistema_gestao_comercial.sql;
-SELECT * FROM Clientes;
-SELECT * FROM Projetos;
-SELECT * FROM Tarefas;
-SELECT * FROM Orcamentos;
-SELECT * FROM Pagamentos;
-
-UPDATE Clientes SET telefone='(11) 99999-9999' WHERE id_cliente=1;
-UPDATE Projetos SET nome='Projeto Atualizado' WHERE id_projeto=1;
-
-Colaboradores
-
-Pedro Paulo Costa do Amaral
-
-Winiston Alle
-
-Yuri Natanael
-
-Vinicius Girão
-
-Pedro Henrique Nunes
-
-Observações
-
-Todos os scripts foram testados no MySQL 8.0.
-
-As tabelas estão normalizadas e estruturadas conforme os diagramas de entidade-relacionamento do trabalho.
-
-O arquivo SQL contém comentários explicativos para facilitar o entendimento
-
-   
-   CREATE DATABASE IF NOT EXISTS sistema_gestao_comercial;
-   USE sistema_gestao_comercial;
+Classe Main (Pacote visao): É o ponto de entrada do programa e a interface de terminal (CLI). Responsabilidade: Exibe o menu, lê a entrada do usuário, e chama os métodos do AlunoServico.

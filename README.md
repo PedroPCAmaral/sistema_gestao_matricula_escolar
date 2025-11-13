@@ -227,6 +227,33 @@ Abra `index.html` e procure por:
 
 Projeto acadêmico - Sistema de Matrícula Escolar
 
+Projeto completo: backend (Spring Boot) + frontend (React) + database init script.
+Instruções para rodar:
+
+1) Banco MySQL
+ - Abra o MySQL Workbench.
+ - Execute o script 'database/init_db.sql' para criar banco, tabelas, triggers, views, procs e usuários.
+ - Confirme que o usuário 'backend_app' com senha 'SenhaBack123!' existe.
+
+2) MongoDB (NoSQL)
+ - Instale e rode o MongoDB localmente (default localhost:27017).
+ - O backend grava logs em uma collection 'logs' no banco 'matricula_nosql'.
+
+3) Backend
+ - Vá para backend/ e execute:
+   mvn clean package
+   mvn spring-boot:run
+ - Backend estará em http://localhost:8080 and API alunos em /api/alunos
+
+4) Frontend
+ - Vá para frontend/ e execute:
+   npm install
+   npm start
+ - Frontend rodará em http://localhost:5173 (vite) or http://localhost:3000 if using CRA (this setup uses vite default)
+
+Notas:
+ - Java: recomendado Java 17 compatível; você tem Java 24, que pode executar a aplicação.
+ - Se tiver problemas com permissões de usuário do MySQL, execute o script com um usuário que tenha privilégios para criar users.
 ---
 
 **Desenvolvido com ❤️ em HTML, CSS e JavaScript puro**

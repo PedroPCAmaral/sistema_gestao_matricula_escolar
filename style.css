@@ -1,0 +1,496 @@
+/*
+ * Estilos CSS para simular o design do projeto original (Tailwind/Shadcn-ui)
+ * Adaptado para CSS puro.
+ */
+
+:root {
+    --primary: #1d4ed8; /* blue-700 */
+    --primary-foreground: #eff6ff; /* blue-50 */
+    --secondary: #f3f4f6; /* gray-100 */
+    --secondary-foreground: #1f2937; /* gray-800 */
+    --background: #ffffff;
+    --foreground: #030712; /* gray-900 */
+    --card: #ffffff;
+    --card-foreground: #030712;
+    --border: #e5e7eb; /* gray-200 */
+    --input: #e5e7eb;
+    --destructive: #dc2626; /* red-600 */
+    --destructive-foreground: #fef2f2; /* red-50 */
+    --radius: 0.5rem; /* rounded-lg */
+}
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.5;
+}
+
+/* Layout e Tipografia */
+.min-h-screen { min-height: 100vh; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.p-4 { padding: 1rem; }
+.w-full { width: 100%; }
+.max-w-md { max-width: 28rem; }
+.max-w-7xl { max-width: 80rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mt-4 { margin-top: 1rem; }
+.pt-8 { padding-top: 2rem; }
+.p-6 { padding: 1.5rem; }
+.text-center { text-align: center; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.font-bold { font-weight: 700; }
+.text-white { color: #ffffff; }
+.text-gray-700 { color: #374151; }
+.text-gray-500 { color: #6b7280; }
+.hidden { display: none !important; }
+
+/* Backgrounds e Gradientes */
+.bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--color-start, #f0f9ff), var(--color-end, #eef2ff)); } /* blue-50 to indigo-100 */
+.bg-gradient-to-br.from-blue-50 { --color-start: #eff6ff; }
+.bg-gradient-to-br.to-indigo-100 { --color-end: #e0e7ff; }
+
+.bg-gradient-to-r { background-image: linear-gradient(to right, var(--color-start), var(--color-end)); }
+.bg-gradient-to-r.from-blue-600 { --color-start: #2563eb; }
+.bg-gradient-to-r.to-indigo-600 { --color-end: #4f46e5; }
+
+/* Cards e Sombras */
+.card {
+    background-color: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.rounded-t-lg { border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+
+/* Formulário e Inputs */
+.form-group { margin-bottom: 1rem; }
+.input {
+    display: flex;
+    height: 2.5rem; /* h-10 */
+    padding: 0.5rem 0.75rem; /* px-3 py-2 */
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--input);
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2); /* ring-2 ring-blue-700/20 */
+}
+
+/* Botões */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    font-weight: 500;
+    height: 2.5rem;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    border: 1px solid transparent;
+}
+
+.button.primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+.button.primary:hover {
+    background-color: #1e40af; /* blue-800 */
+}
+
+/* Alertas */
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+.alert.destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+    border-color: var(--destructive);
+}
+
+/* Estilos para a Página Home (Serão expandidos na próxima fase) */
+.sidebar {
+    width: 16rem; /* w-64 */
+    background-color: #1f2937; /* gray-800 */
+    color: #f9fafb; /* gray-50 */
+    padding: 1rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.main-content {
+    margin-left: 16rem;
+    padding: 1rem;
+    width: calc(100% - 16rem);
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+}
+
+.grid-cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.card-aluno {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    background-color: var(--card);
+}
+
+.card-aluno h3 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-aluno p {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.card-aluno .actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.button.secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+.button.secondary:hover {
+    background-color: #e5e7eb; /* gray-200 */
+}
+
+.button.destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+}
+.button.destructive:hover {
+    background-color: #b91c1c; /* red-700 */
+}
+
+/* Estilos para o Modal (Dialog) - Simples */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    width: 90%;
+    max-width: 42rem; /* max-w-lg */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.form-modal .form-group {
+    margin-bottom: 1rem;
+}
+
+.form-modal .grid-cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.form-modal .grid-cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    padding-right: 2.5rem;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6b7280;
+    font-size: 0.75rem;
+}
+
+.select-wrapper select.input {
+    height: 2.5rem;
+}
+
+/* Estilos para a barra lateral (Sidebar) */
+.sidebar {
+    width: 16rem;
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    color: #d1d5db; /* gray-300 */
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.sidebar-nav a:hover {
+    background-color: #374151; /* gray-700 */
+}
+
+.sidebar-nav svg {
+    margin-right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid #374151;
+}
+
+.sidebar-footer button {
+    width: 100%;
+    justify-content: flex-start;
+    background: none;
+    color: #d1d5db;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: var(--radius);
+}
+
+.sidebar-footer button:hover {
+    background-color: #374151;
+}
+
+/* Estilos para a barra de busca e filtros */
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.filter-bar .input {
+    flex-grow: 1;
+}
+
+.filter-bar .select-wrapper {
+    width: 150px;
+}
+
+/* Estilos para a tabela/lista de alunos */
+.aluno-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.aluno-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    background-color: var(--card);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.aluno-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+}
+
+.aluno-card p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.aluno-card .actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.aluno-card .actions .button {
+    height: 2rem;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+}
+
+.aluno-card .tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px; /* full rounded */
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.tag.serie {
+    background-color: #bfdbfe; /* blue-200 */
+    color: #1e40af; /* blue-800 */
+}
+
+.tag.turno {
+    background-color: #d1fae5; /* green-100 */
+    color: #065f46; /* green-800 */
+}
+
+/* Utilitários para ícones (simulação de lucide-react) */
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.icon-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Ícones SVG */
+.icon-logout {
+    /* LogOut */
+}
+.icon-plus {
+    /* Plus */
+}
+.icon-edit {
+    /* Edit2 */
+}
+.icon-trash {
+    /* Trash2 */
+}
+.icon-users {
+    /* Users */
+}
+.icon-alert-circle {
+    /* AlertCircle */
+}
+.icon-check-circle {
+    /* CheckCircle */
+}
+.icon-x {
+    /* X (para fechar modal) */
+}
+
+/* Ajuste para o botão de login */
+#login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-button.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

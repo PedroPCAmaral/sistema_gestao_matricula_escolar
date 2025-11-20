@@ -156,14 +156,14 @@ Secretária:
 
 ═══════════════════════════════════════════════════════════════════════════════
 
-🚀 PARA APRESENTAR
+🚀 PARA APRESENTAÇÃO
 
 1. Prepare seu computador com:
    ✓ Java, Maven, MySQL e Redis instalados
    ✓ Backend rodando em http://localhost:8080
    ✓ Frontend rodando em http://localhost:3000
 
-2. Estude o ROTEIRO_APRESENTACAO.md
+2. Utilize o ROTEIRO_APRESENTACAO.md
 
 3. Faça uma demonstração ao vivo:
    ✓ Login
@@ -172,7 +172,7 @@ Secretária:
    ✓ Registrar matrícula
    ✓ Visualizar fila Redis
 
-4. Tenha screenshots prontos como plano B
+
 
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -196,7 +196,7 @@ Se algo não funcionar:
 
 ═══════════════════════════════════════════════════════════════════════════════
 
-📋 CHECKLIST ANTES DA APRESENTAÇÃO
+📋 CHECKLIST 
 
 □ Java 17+ instalado
 □ Maven 3.8+ instalado
@@ -210,9 +210,9 @@ Se algo não funcionar:
 □ CRUD de turmas funciona
 □ Registrar matrícula funciona
 □ Fila Redis está funcionando
-□ Roteiro de apresentação estudado
-□ Documento técnico lido
-□ Possíveis perguntas preparadas
+□ Roteiro de apresentação 
+□ Documento técnico
+
 
 ═══════════════════════════════════════════════════════════════════════════════
 

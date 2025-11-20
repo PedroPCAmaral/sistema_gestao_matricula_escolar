@@ -135,6 +135,13 @@ Leia estes arquivos ANTES de apresentar:
 
 🔐 CREDENCIAIS DE TESTE
 
+Credenciais de Teste:
+Admin: admin@matricula.com / admin123
+
+Secretário: secretario@matricula.com / sec123
+
+Professor: professor@matricula.com / prof123
+
 Administrador:
   Email: admin@matricula.com
   Senha: admin123456

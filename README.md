@@ -246,6 +246,6 @@ Este projeto demonstra:
 
  🎓
 
-Desenvolvido para trabalho final de Laboratório de Banco de Dados
+Desenvolvido para Trabalho Final de Laboratório de Banco de Dados.
 
 ═══════════════════════════════════════════════════════════════════════════════
